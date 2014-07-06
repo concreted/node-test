@@ -40,8 +40,6 @@ process.stdin.on('data', function (input) {
     //console.log("CMD: " + command);
     //console.log("ARGS: " + args);
 
-    commands[command](args);
-
     if (command in commands) {
 	commands[command](args);
     }
