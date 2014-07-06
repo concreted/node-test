@@ -3,7 +3,7 @@
 apt-get update
 apt-get install -y git-core
 apt-get install -y emacs
-apt-get install -y nodejs npm
+#apt-get install -y nodejs npm
 apt-get install -y make g++
 
 # Install MongoDB from official repo
