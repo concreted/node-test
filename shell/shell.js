@@ -31,14 +31,11 @@ commands['wget'] = function(args) {
 }
 //********** End Commands Declaration **********/
  
-process.stdin.on('data', function (input) {
+var cmdExec = function (input) {
     var matches = input.toString().match(/(\w+)(.*)/);
     // matches[0] is the origina string
     var command = matches[1].toLowerCase();
     var args = matches[2].trim().split(/\s+/);
-
-    //console.log("CMD: " + command);
-    //console.log("ARGS: " + args);
 
     if (command in commands) {
 	commands[command](args);
@@ -46,4 +43,15 @@ process.stdin.on('data', function (input) {
     else {
 	console.log("Unknown command: " + command);
     }
-});
+    process.stdout.write("> ");
+}
+
+if (process.argv.length > 2) {       
+    input = process.argv.slice(2, process.argv.length).join(' ');
+    cmdExec(input);
+    process.stdout.write('\r');
+}
+else {
+    process.stdout.write('> ');
+    process.stdin.on('data', cmdExec);
+}
