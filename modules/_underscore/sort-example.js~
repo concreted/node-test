@@ -1,0 +1,7 @@
+var underscore = require('underscore');
+
+var listOfNumbers = [1,5,4,3,7,6];
+
+var sortedList = underscore.sortBy(listOfNumbers, function (n) { return n; });
+
+console.log(sortedList);

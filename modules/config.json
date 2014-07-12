@@ -1,0 +1,5 @@
+{
+  "poll-frequency": 10,
+  "urls": ["test.com", "test.org"],
+  "data": { "name": "test", "encoding": "utf8" }
+}
