@@ -5,3 +5,5 @@ cd node-v0.10.29
 ./configure
 make
 sudo make install
+
+sudo npm install -g mocha
