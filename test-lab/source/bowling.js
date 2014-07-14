@@ -3,11 +3,14 @@ var BowlingGame = function () {
 };
 
 BowlingGame.prototype.roll = function (pins) {
-   // record this roll
+    // record this roll
+    this.rolls.push(pins);
 };
 
 BowlingGame.prototype.score = function () {
-    return 0;
+    return this.rolls.reduce(function(acc, n) {
+	return acc + n;
+    }, 0);
 };
 
 module.exports = BowlingGame;
