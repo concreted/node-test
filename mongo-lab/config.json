@@ -1,0 +1,7 @@
+{
+  "connection": {
+    "dbName": "nodelabs-users",
+    "host": "localhost",
+    "port": 27017
+  }
+}
