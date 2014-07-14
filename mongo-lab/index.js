@@ -42,13 +42,26 @@ var count = function (callback) {
 };
 
 db.open(function (err) {
-    if (err) throw err;
-    reset(function (err) {
-	if (err) throw err;
-	count(function (err, numberOfUsers) {
-            if (err) throw err;
-            console.log("User count is %d", numberOfUsers);
-            db.close();
-	});
+
+    var getCountByFirstName = (function getCountByFirstName() {
+	var map = function () {
+            emit(this.firstName.charAt(0), 1);
+	};
+
+	var reduce = function (key, values) {
+            return values.length;
+	};
+
+	return function _getCountByFirstName (cb) {
+            db.collection("nodelabs-users", function getUsersCollection (err, collection) {
+		if(err) throw err;
+		collection.mapReduce(map.toString(), reduce.toString(), {out:{inline:1}}, cb);
+            });
+	};
+    }());
+
+    getCountByFirstName(function (error, results) {
+	console.log(JSON.stringify(results, null, 4));
+	db.close();
     });
 });
