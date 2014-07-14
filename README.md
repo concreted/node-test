@@ -18,8 +18,8 @@ notes
 
 ### modules and version control
 
-don't add installed modules '''node_modules''' to version control.
+don`t add installed modules ```node_modules``` to version control.
 
-instead, just add '''package.json'''. 
+instead, just add ```package.json```. 
 
-if need to reinstall modules, run '''npm install''' in folder with '''package.json'''. 
+if need to reinstall modules, run ```npm install``` in folder with ```package.json```. 
